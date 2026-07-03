@@ -1,0 +1,48 @@
+CREATE TABLE ZooTable
+(ZooId INT PRIMARY KEY ,ZooName VARCHAR(50),City VARCHAR(50),
+Street VARCHAR(50), NUMBER VARCHAR(50));
+
+CREATE TABLE Animals
+(AnimalID INT PRIMARY KEY,
+Age INT,
+Happiness INT,
+ZooId INT,
+AnimalType VARCHAR(50),
+FOREIGN KEY (ZooId) REFERENCES ZooTable(ZooId));
+
+CREATE TABLE PREDATOR
+(AnimalID INT PRIMARY KEY,
+PredatorName VARCHAR(50),
+PredatorWeight FLOAT,
+PredatorGender VARCHAR(50),
+PredatorSpecies VARCHAR(50),
+FOREIGN KEY (AnimalID) REFERENCES Animals(AnimalID));
+
+CREATE TABLE FISH
+(AnimalID INT PRIMARY KEY,
+FishLength FLOAT,
+FishPattern VARCHAR(50),
+FishSpecies VARCHAR(50),
+FOREIGN KEY (AnimalID) REFERENCES Animals(AnimalID));
+
+CREATE TABLE FISH_COLORS
+(AnimalID INT,
+FishColor VARCHAR(50),
+PRIMARY KEY (AnimalID, FishColor),
+FOREIGN KEY (AnimalID) REFERENCES FISH(AnimalID));
+
+
+CREATE TABLE PENGUIN
+(AnimalID INT PRIMARY KEY,
+PenguinName VARCHAR(50),
+PenguinHeight FLOAT,
+PenguinRank INT,
+FOREIGN KEY (AnimalID) REFERENCES Animals(AnimalID));
+
+CREATE TABLE MEDICAL_TREATMENT
+(TreatmentID INT PRIMARY KEY,
+TreatmentDescription VARCHAR(50),
+TreatmentDate DATE,
+AnimalID INT,
+FOREIGN KEY (AnimalID) REFERENCES Animals(AnimalID));
+
